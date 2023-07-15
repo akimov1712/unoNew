@@ -35,6 +35,12 @@
         <action
             android:id="@+id/action_addFragment_to_tableFragment"
             app:destination="@id/tableFragment" />
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+        <argument
+            android:name="gameId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/aboutUserFragment"

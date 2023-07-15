@@ -1,226 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_activity">
 
-    <TextView
-        android:id="@+id/textView_4"
-        style="@style/style_text_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/score_table"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView_5"
-        style="@style/style_text_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Цель:"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_4"
-        app:layout_constraintStart_toEndOf="@+id/textView_4"
-        app:layout_constraintTop_toTopOf="@+id/textView_4" />
-
-    <TextView
-        android:id="@+id/tv_target"
-        style="@style/style_text_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="%s"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_4"
-        app:layout_constraintStart_toEndOf="@+id/textView_5"
-        app:layout_constraintTop_toTopOf="@+id/textView_4" />
-
-    <ImageView
-        android:id="@+id/btn_close_activity"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="25dp"
-        android:src="@drawable/icon_close"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_number_of_game"
-        style="@style/style_text_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="№ %s"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_close_activity"
-        app:layout_constraintEnd_toStartOf="@+id/btn_close_activity"
-        app:layout_constraintTop_toTopOf="@+id/btn_close_activity" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_score_tyomik"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Тьомик"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <TextView
+            android:id="@+id/textView_4"
+            style="@style/style_text_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/score_table"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_count_games" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_score_makson"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Максон"
-            android:textSize="17sp"
+        <TextView
+            android:id="@+id/textView_5"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Цель:"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_4"
+            app:layout_constraintStart_toEndOf="@+id/textView_4"
+            app:layout_constraintTop_toTopOf="@+id/textView_4" />
+
+        <TextView
+            android:id="@+id/tv_target"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%s"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_4"
+            app:layout_constraintStart_toEndOf="@+id/textView_5"
+            app:layout_constraintTop_toTopOf="@+id/textView_4" />
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/icon_close"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_count_games" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_score_artem"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Артем"
-            android:textSize="17sp"
+        <TextView
+            android:id="@+id/tv_number_of_game"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="№ %s"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_close"
+            app:layout_constraintEnd_toStartOf="@+id/btn_close"
+            app:layout_constraintTop_toTopOf="@+id/btn_close" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_score"
+            app:layout_constraintStart_toStartOf="@+id/textView_4"
+            app:layout_constraintTop_toBottomOf="@+id/textView_4" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_rounds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_count_games" />
+            app:layout_constraintStart_toEndOf="@+id/rv_users"
+            app:layout_constraintTop_toTopOf="@+id/rv_users"
+            tools:listitem="@layout/item_round" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_score_samurai"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_button"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Самурай"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_count_games" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="110dp"
-        android:layout_height="200dp"
-        android:layout_marginVertical="20dp"
-        android:layout_marginStart="20dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_4">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_score_item"
-            android:backgroundTint="@color/white"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="Игроки" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_score_item"
-            android:backgroundTint="@color/background_item_score_blue"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="Тьомик"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_score_item"
-            android:backgroundTint="@color/background_item_score_blue"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="Максон"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_score_item"
-            android:backgroundTint="@color/background_item_score_blue"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="Артем"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_score_item"
-            android:backgroundTint="@color/background_item_score_blue"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="@string/kaka_pisya"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_score"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:overScrollMode="never"
-        android:orientation="horizontal"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="24dp"
-        tools:listitem="@layout/item_round"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

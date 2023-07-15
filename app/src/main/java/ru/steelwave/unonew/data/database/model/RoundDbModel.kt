@@ -4,5 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RoundDbModel(
+    val roundId: Int,
     val scores: List<ScoreDbModel>,
 )

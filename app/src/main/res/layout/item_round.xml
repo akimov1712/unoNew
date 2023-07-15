@@ -16,6 +16,6 @@
         tools:itemCount="5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_point" />
+        tools:listitem="@layout/item_score" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

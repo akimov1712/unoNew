@@ -20,9 +20,7 @@ class GameRepositoryImpl(application: Application): GameRepository {
         mapper.mapListDbModelToListEntity(it)
     }
 
-    override fun getGame(gameId: Int) = Transformations.map(dao.getGame(gameId)){
-        mapper.mapDbModelToEntity(it)
-    }
+    override suspend fun getGame(gameId: Int) = mapper.mapDbModelToEntity(dao.getGame(gameId))
 
     override suspend fun addGame(game: GameModel) {
         dao.insertGame(mapper.mapEntityToDbModel(game))

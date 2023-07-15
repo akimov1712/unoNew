@@ -6,7 +6,7 @@ import ru.steelwave.unonew.domain.entity.GameModel
 interface GameRepository {
 
     fun getAllGames(): LiveData<List<GameModel>>
-    fun getGame(gameId: Int): LiveData<GameModel>
+    suspend fun getGame(gameId: Int): GameModel
     suspend fun addGame(game: GameModel)
 
 }

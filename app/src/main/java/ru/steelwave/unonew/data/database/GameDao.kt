@@ -13,8 +13,8 @@ interface GameDao {
     @Query("DELETE FROM game")
     fun deleteAllGame()
 
-    @Query("SELECT * FROM game WHERE gameId == :gameId LIMIT 1")
-    fun getGame(gameId: Int): LiveData<GameDbModel>
+    @Query("SELECT * FROM game WHERE gameId=:gameId LIMIT 1")
+    suspend fun getGame(gameId: Int): GameDbModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: GameDbModel)

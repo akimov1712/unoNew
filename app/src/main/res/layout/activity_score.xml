@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView_4"
             app:layout_constraintTop_toBottomOf="@+id/textView_4"
             tools:itemCount="5"
-            tools:listitem="@layout/item_point" />
+            tools:listitem="@layout/item_score" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_rounds"
