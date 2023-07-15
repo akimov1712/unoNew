@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/background_item_game_active"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="14dp">
+
+    <TextView
+        android:id="@+id/tv_name_winner"
+        style="@style/style_text_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%s - %s"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_number_of_game"
+        style="@style/style_text_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:text="%s"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_winner" />
+
+    <TextView
+        android:id="@+id/texView_4"
+        style="@style/style_text_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:text="игра"
+        android:layout_marginStart="4dp"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_game"
+        app:layout_constraintStart_toEndOf="@+id/tv_number_of_game"
+        app:layout_constraintTop_toTopOf="@+id/tv_number_of_game" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:text="%s.%s.%s"
+        android:textSize="12dp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toTopOf="@+id/tv_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_name_winner" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:text="%s:%s"
+        android:textSize="12dp"
+        android:gravity="top"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

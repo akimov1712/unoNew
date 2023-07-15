@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_activity"
+    tools:context=".presentaion.about.AboutUserFragment">
+
+    <TextView
+        android:id="@+id/tv_username"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Самурай"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/icon_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_username" />
+
+    <TextView
+        android:id="@+id/textView_1"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Побед:"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+    <TextView
+        android:id="@+id/tv_count_wins"
+        style="@style/style_text_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="%s"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_1"
+        app:layout_constraintTop_toTopOf="@+id/textView_1" />
+
+    <TextView
+        android:id="@+id/textView_2"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Рекорд:"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_1" />
+
+    <TextView
+        android:id="@+id/tv_record"
+        style="@style/style_text_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="%s"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_2"
+        app:layout_constraintTop_toTopOf="@+id/textView_2" />
+
+    <TextView
+        android:id="@+id/textView_3"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Мин. Рекорд:"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_2" />
+
+    <TextView
+        android:id="@+id/tv_min_record"
+        style="@style/style_text_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="%s"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_3"
+        app:layout_constraintTop_toTopOf="@+id/textView_3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Всего очков:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_3" />
+
+    <TextView
+        android:id="@+id/tv_total_points"
+        style="@style/style_text_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="%s"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/style_text_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Побежденных раундов:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/tv_round_wins"
+        style="@style/style_text_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="%s"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

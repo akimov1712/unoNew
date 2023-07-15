@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    app:layout_scrollEffect="none"
+    android:scrollbars="none"
+    android:background="@color/background_activity"
+    tools:context=".presentaion.ScoreActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/textView_4"
+            style="@style/style_text_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/score_table"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_5"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Цель:"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_4"
+            app:layout_constraintStart_toEndOf="@+id/textView_4"
+            app:layout_constraintTop_toTopOf="@+id/textView_4" />
+
+        <TextView
+            android:id="@+id/tv_target"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%s"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_4"
+            app:layout_constraintStart_toEndOf="@+id/textView_5"
+            app:layout_constraintTop_toTopOf="@+id/textView_4" />
+
+        <ImageView
+            android:id="@+id/btn_close_activity"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/icon_close"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_number_of_game"
+            style="@style/style_text_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="№ %s"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_close_activity"
+            app:layout_constraintEnd_toStartOf="@+id/btn_close_activity"
+            app:layout_constraintTop_toTopOf="@+id/btn_close_activity" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@+id/textView_4"
+            app:layout_constraintTop_toBottomOf="@+id/textView_4"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_point" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_rounds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rv_name"
+            app:layout_constraintTop_toTopOf="@+id/rv_name"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_round" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

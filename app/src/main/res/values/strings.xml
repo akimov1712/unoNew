@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UNO</string>
+    <string name="UNO_counter">Счетчик UNO</string>
+    <string name="games">Игры</string>
+    <string name="score_table">Таблица очков</string>
+    <string name="kaka_pisya">Самурай</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
