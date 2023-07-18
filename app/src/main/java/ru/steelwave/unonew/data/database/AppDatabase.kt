@@ -12,7 +12,7 @@ import ru.steelwave.unonew.data.database.model.UserDbModel
 @Database(entities = [UserDbModel::class, GameDbModel::class], version = 2, exportSchema = false)
 @TypeConverters(
     UserConverter::class,
-    RoundConverter::class,
+    RoundListConverter::class,
     ScoreConverter::class,
     DateConverter::class,
     GameConverter::class

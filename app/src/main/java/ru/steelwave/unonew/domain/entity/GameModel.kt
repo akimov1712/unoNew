@@ -8,8 +8,8 @@ data class GameModel(
     val gameId: Int = Const.UNDEFINED_ID,
     val participants: List<UserModel>,
     val targetPoints: Int,
-    val leadingUser: ScoreModel,
+    var leadingUser: ScoreModel,
     var creationDate: Long,
     var isFinished: Boolean = false,
-    val rounds: List<RoundModel> = listOf(),
+    val rounds: MutableList<RoundModel> = mutableListOf()
 )

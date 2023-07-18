@@ -1,6 +1,6 @@
 package ru.steelwave.unonew.domain.entity
 
 data class RoundModel(
-    val roundId: Int,
+    var roundId: Int,
     val scores: List<ScoreModel>,
 )
