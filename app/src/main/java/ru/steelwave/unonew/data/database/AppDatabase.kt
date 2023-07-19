@@ -13,6 +13,8 @@ import ru.steelwave.unonew.data.database.model.UserDbModel
 @TypeConverters(
     UserConverter::class,
     RoundListConverter::class,
+    RoundConverter::class,
+    ScoreListConverter::class,
     ScoreConverter::class,
     DateConverter::class,
     GameConverter::class

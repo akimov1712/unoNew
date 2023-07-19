@@ -28,10 +28,4 @@ class UserRepositoryImpl(application: Application):UserRepository {
         mapper.mapListDbModelToListEntity(it)
     }
 
-//    init {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            dao.deleteAllUsers()
-//        }
-//    }
-
 }
