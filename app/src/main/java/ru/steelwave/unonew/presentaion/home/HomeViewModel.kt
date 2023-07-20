@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.steelwave.unonew.data.repository.GameRepositoryImpl
+import ru.steelwave.unonew.data.repository.RoundRepositoryImpl
 import ru.steelwave.unonew.data.repository.UserRepositoryImpl
 import ru.steelwave.unonew.domain.entity.GameModel
 import ru.steelwave.unonew.domain.entity.ScoreModel
@@ -14,6 +15,7 @@ import ru.steelwave.unonew.domain.entity.UserModel
 import ru.steelwave.unonew.domain.useCase.game.AddGameUseCase
 import ru.steelwave.unonew.domain.useCase.game.GetAllGamesUseCase
 import ru.steelwave.unonew.domain.useCase.game.GetGameUseCase
+import ru.steelwave.unonew.domain.useCase.round.GetRoundListUseCase
 import ru.steelwave.unonew.domain.useCase.user.AddUserUseCase
 import ru.steelwave.unonew.domain.useCase.user.DeleteUserUseCase
 import ru.steelwave.unonew.domain.useCase.user.GetAllUserUseCase
@@ -26,7 +28,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val addUserUseCase = AddUserUseCase(userRepository)
     private val getAllUsersUseCase = GetAllUserUseCase(userRepository)
-    private val getUserUseCase = GetUserUseCase(userRepository)
     private val deleteUserUseCase = DeleteUserUseCase(userRepository)
 
     private val addGameUseCase = AddGameUseCase(gameRepository)

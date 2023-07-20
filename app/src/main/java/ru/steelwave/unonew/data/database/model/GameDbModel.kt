@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 import ru.steelwave.unonew.Const
 
-@Serializable
 @Entity(tableName = "game")
 data class GameDbModel(
     @PrimaryKey(autoGenerate = true)
@@ -15,5 +14,4 @@ data class GameDbModel(
     val leadingUser: ScoreDbModel,
     var creationDate: Long,
     var isFinished: Boolean = false,
-    val rounds: MutableList<RoundDbModel> = mutableListOf(),
 )

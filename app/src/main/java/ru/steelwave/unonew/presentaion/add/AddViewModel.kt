@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.room.util.copy
 import kotlinx.coroutines.launch
 import ru.steelwave.unonew.data.repository.GameRepositoryImpl
+import ru.steelwave.unonew.data.repository.RoundRepositoryImpl
 import ru.steelwave.unonew.data.repository.UserRepositoryImpl
 import ru.steelwave.unonew.domain.entity.GameModel
 import ru.steelwave.unonew.domain.entity.RoundModel
@@ -16,6 +17,8 @@ import ru.steelwave.unonew.domain.entity.ScoreModel
 import ru.steelwave.unonew.domain.entity.UserModel
 import ru.steelwave.unonew.domain.useCase.game.AddGameUseCase
 import ru.steelwave.unonew.domain.useCase.game.GetGameUseCase
+import ru.steelwave.unonew.domain.useCase.round.AddRoundUseCase
+import ru.steelwave.unonew.domain.useCase.round.GetRoundListUseCase
 import ru.steelwave.unonew.domain.useCase.user.AddUserUseCase
 import ru.steelwave.unonew.domain.useCase.user.GetUserUseCase
 
@@ -23,11 +26,14 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = UserRepositoryImpl(application)
     private val gameRepository = GameRepositoryImpl(application)
+    private val roundRepository = RoundRepositoryImpl(application)
 
     private val getUserUseCase = GetUserUseCase(userRepository)
     private val getGameUseCase = GetGameUseCase(gameRepository)
     private val addUserUseCase = AddUserUseCase(userRepository)
     private val addGameUseCase = AddGameUseCase(gameRepository)
+    private val addRoundUseCase = AddRoundUseCase(roundRepository)
+    private val getRoundListUseCase = GetRoundListUseCase(roundRepository)
 
     private val _user: MutableLiveData<UserModel> = MutableLiveData()
     val user: LiveData<UserModel> get() = _user
@@ -65,8 +71,11 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             val copyGame = getGameUseCase(gameId).copy()
-            if (copyGame.rounds.isNotEmpty()){
-                val newRound = copyGame.rounds.last().copy()
+            val roundListGame = getRoundListUseCase(gameId).value
+            Log.d("sis", roundListGame.toString())
+
+            if (roundListGame?.isNotEmpty() == true){
+                val newRound = roundListGame.last().copy()
                 val newScore = newRound.scores.toList()
 
                 var leadingUser = newScore[0]
@@ -85,8 +94,8 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 }
                 newRound.roundId++
-                copyGame.rounds.add(newRound)
-            } else{
+                addRoundUseCase(newRound)
+            } else {
                 val newScoreList = mutableListOf<ScoreModel>()
                 for (user in copyGame.participants){
                     newScoreList.add(ScoreModel(user, 0))
@@ -96,15 +105,14 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
                         it.countPoints = score
                     }
                 }
-                val newRound = RoundModel(1, newScoreList)
-                copyGame.rounds.add(newRound)
+                val newRound = RoundModel(gameId = copyGame.gameId, numRoundInGame = 1, scores = newScoreList)
+                addRoundUseCase(newRound)
             }
 
             addGameUseCase(copyGame)
             addUserUseCase(user)
             closeFragment()
         }
-
     }
 
     private fun closeFragment(){

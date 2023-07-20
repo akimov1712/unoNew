@@ -13,10 +13,7 @@ object GameMapper {
         leadingUser = ScoreMapper.mapDbModelToEntity(game.leadingUser),
         targetPoints = game.targetPoints,
         creationDate = game.creationDate,
-        isFinished = game.isFinished,
-        rounds = game.rounds.map {
-            RoundMapper.mapToModel(it)
-        } as MutableList<RoundModel>
+        isFinished = game.isFinished
     )
 
     fun mapEntityToDbModel(game: GameModel) = GameDbModel(
@@ -25,19 +22,11 @@ object GameMapper {
         leadingUser = ScoreMapper.mapEntityToDbModel(game.leadingUser),
         targetPoints = game.targetPoints,
         creationDate = game.creationDate,
-        isFinished = game.isFinished,
-        rounds = game.rounds.map {
-            RoundMapper.mapToDbModel(it)
-        } as MutableList<RoundDbModel>
+        isFinished = game.isFinished
     )
 
     fun mapListDbModelToListEntity(gameList: List<GameDbModel>) = gameList.map {
         mapDbModelToEntity(it)
     }
-
-    fun mapListEntityToListDbModel(gameList: List<GameModel>) = gameList.map {
-        mapEntityToDbModel(it)
-    }
-
 
 }

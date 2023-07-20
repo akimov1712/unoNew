@@ -78,8 +78,7 @@ class AddFragment : Fragment() {
                     viewModel.updateData(score, args.userId, args.gameId)
                 }
             } else {
-                val score = binding.etCountScore.text.toString().toInt()
-                viewModel.updateData(score, args.userId, args.gameId)
+                viewModel.getRoundList(args.gameId)
             }
         }
     }

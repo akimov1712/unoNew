@@ -26,7 +26,7 @@ class RoundAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: RoundViewHolder, position: Int) {
         val roundList = getItem(position)
         with(holder.binding) {
-            val adapter = ScoreAdapter(context, roundList.roundId)
+            val adapter = ScoreAdapter(context, roundList.numRoundInGame)
             val newScoreList = mutableListOf(ScoreModel(UserModel(name = ""), 0))
             roundList.scores.forEach {
                 newScoreList.add(it)

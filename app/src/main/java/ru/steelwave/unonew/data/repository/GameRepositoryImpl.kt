@@ -25,4 +25,11 @@ class GameRepositoryImpl(application: Application): GameRepository {
     override suspend fun addGame(game: GameModel) {
         dao.insertGame(mapper.mapEntityToDbModel(game))
     }
+
+//    init {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            dao.deleteAllGame()
+//        }
+//    }
+
 }

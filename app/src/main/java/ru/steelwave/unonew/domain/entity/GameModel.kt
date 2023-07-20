@@ -11,5 +11,4 @@ data class GameModel(
     var leadingUser: ScoreModel,
     var creationDate: Long,
     var isFinished: Boolean = false,
-    val rounds: MutableList<RoundModel> = mutableListOf()
 )

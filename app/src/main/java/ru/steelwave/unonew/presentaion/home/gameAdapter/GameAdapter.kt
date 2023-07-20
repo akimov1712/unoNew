@@ -12,7 +12,7 @@ import ru.steelwave.unonew.utils.convertLongToTime
 import java.text.SimpleDateFormat
 import java.util.*
 
-class GameAdapter:ListAdapter<GameModel, GameViewHolder>(GameItemDiffCallback()) {
+class GameAdapter():ListAdapter<GameModel, GameViewHolder>(GameItemDiffCallback()) {
 
     var onGameClickListener:((GameModel) -> Unit)? = null
 
@@ -42,8 +42,6 @@ class GameAdapter:ListAdapter<GameModel, GameViewHolder>(GameItemDiffCallback())
             val leaderScore = gameList.leadingUser.countPoints
             if (gameList.isFinished){
                 tvNameWinner.text = "Победитель $leaderName"
-            } else if(gameList.rounds.size == 0){
-                tvNameWinner.text = "Первый раунд"
             } else {
                 tvNameWinner.text = "$leaderName - $leaderScore"
             }

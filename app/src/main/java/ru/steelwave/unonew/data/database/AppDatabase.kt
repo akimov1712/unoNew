@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ru.steelwave.unonew.data.converter.*
 import ru.steelwave.unonew.data.database.model.GameDbModel
+import ru.steelwave.unonew.data.database.model.RoundDbModel
 import ru.steelwave.unonew.data.database.model.UserDbModel
 
-@Database(entities = [UserDbModel::class, GameDbModel::class], version = 2, exportSchema = false)
+@Database(entities = [UserDbModel::class, GameDbModel::class, RoundDbModel::class], version = 4, exportSchema = false)
 @TypeConverters(
     UserConverter::class,
-    RoundListConverter::class,
     RoundConverter::class,
     ScoreListConverter::class,
     ScoreConverter::class,
@@ -23,6 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun gameDao(): GameDao
+    abstract fun roundDao(): RoundDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null

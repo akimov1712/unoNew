@@ -67,11 +67,13 @@ class TableFragment : Fragment() {
             binding.tvNumberOfGame.text = "№ " + it.gameId.toString()
             setupRecyclerView(it)
         }
+        viewModel.roundList.observe(viewLifecycleOwner){
+            setupRoundAdapter(it)
+        }
     }
 
     private fun setupRecyclerView(game: GameModel){
         setupUserAdapter(game)
-        setupRoundAdapter(game)
         setupUserAdapterListeners(game)
     }
 
@@ -92,9 +94,8 @@ class TableFragment : Fragment() {
         binding.rvUsers.adapter = userAdapter
     }
 
-    private fun setupRoundAdapter(game: GameModel){
-        roundAdapter.submitList(game.rounds)
-        Log.d("sis", game.toString())
+    private fun setupRoundAdapter(roundList: List<RoundModel>){
+        roundAdapter.submitList(roundList)
         binding.rvRounds.adapter = roundAdapter
     }
 
