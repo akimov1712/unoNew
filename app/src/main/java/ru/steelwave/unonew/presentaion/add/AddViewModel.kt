@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.room.util.copy
 import kotlinx.coroutines.launch
 import ru.steelwave.unonew.data.repository.GameRepositoryImpl
 import ru.steelwave.unonew.data.repository.RoundRepositoryImpl
@@ -44,6 +43,9 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
     private val _closeFragment: MutableLiveData<Any> = MutableLiveData()
     val closeFragment: LiveData<Any> get() = _closeFragment
 
+    private val _finishGame: MutableLiveData<Any> = MutableLiveData()
+    val finishGame: LiveData<Any> get() = _finishGame
+
     fun getUser(userId: Int) {
         viewModelScope.launch {
             val user = getUserUseCase(userId)
@@ -59,64 +61,81 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateData(score: Int, userId: Int, gameId: Int) {
-        viewModelScope.launch {
-            val user = getUserUseCase(userId).copy()
-            user.roundsWon++
-            user.totalPoints += score
-            if (user.maxPoints < score){
-                user.maxPoints = score
-            }
-            if (user.minPoints > score || user.minPoints == 0){
-                user.minPoints = score
-            }
+        getRoundListUseCase(gameId).observeForever { roundList ->
+            viewModelScope.launch {
+                val copyUser = getUserUseCase(userId).copy()
+                copyUser.roundsWon++
+                copyUser.totalPoints += score
+                if (copyUser.maxPoints < score) {
+                    copyUser.maxPoints = score
+                }
+                if (copyUser.minPoints > score || copyUser.minPoints == 0) {
+                    copyUser.minPoints = score
+                }
 
-            val copyGame = getGameUseCase(gameId).copy()
-            val roundListGame = getRoundListUseCase(gameId).value
-            Log.d("sis", roundListGame.toString())
+                val copyGame = getGameUseCase(gameId).copy()
 
-            if (roundListGame?.isNotEmpty() == true){
-                val newRound = roundListGame.last().copy()
-                val newScore = newRound.scores.toList()
-
-                var leadingUser = newScore[0]
-
-                for (i in newScore){
-                    if (i.user == user){
-                        i.countPoints += score
-                        if (i.countPoints >= leadingUser.countPoints){
-                            copyGame.leadingUser = i
-                            leadingUser = i
+                if (roundList?.isNotEmpty() == true) {
+                    val lastRound = roundList.last()
+                    val newScoreList = lastRound.scores
+                    newScoreList.map {
+                        if (it.user.userId == copyUser.userId) {
+                            it.countPoints += score
+                            if (it.countPoints >= copyGame.targetPoints){
+                                copyUser.wins++
+                                copyGame.isFinished = true
+                                finishGame()
+                            }
+                            if (it.countPoints > copyGame.leadingUser.countPoints){
+                                copyGame.leadingUser = it
+                            }
                         }
-                        if (i.countPoints >= copyGame.targetPoints){
+                    }
+                    val newRound = RoundModel(
+                        numRoundInGame = lastRound.numRoundInGame++,
+                        scores = newScoreList,
+                        gameId = copyGame.gameId
+                    )
+                    addRoundUseCase(newRound)
+                } else {
+                    val newScoreList = mutableListOf<ScoreModel>()
+                    for (user in copyGame.participants) {
+                        newScoreList.add(ScoreModel(user, 0))
+                    }
+                    newScoreList.map {
+                        if (it.user.userId == copyUser.userId) {
+                            it.countPoints = score
+                        }
+                        if (it.countPoints >= copyGame.targetPoints){
+                            copyUser.wins++
                             copyGame.isFinished = true
-                            i.user.wins++
+                            finishGame()
+                        }
+                        if (it.countPoints > copyGame.leadingUser.countPoints){
+                            copyGame.leadingUser = it
                         }
                     }
+                    val newRound = RoundModel(
+                        gameId = copyGame.gameId,
+                        numRoundInGame = 0,
+                        scores = newScoreList
+                    )
+                    addRoundUseCase(newRound)
                 }
-                newRound.roundId++
-                addRoundUseCase(newRound)
-            } else {
-                val newScoreList = mutableListOf<ScoreModel>()
-                for (user in copyGame.participants){
-                    newScoreList.add(ScoreModel(user, 0))
-                }
-                newScoreList.map {
-                    if (it.user == user){
-                        it.countPoints = score
-                    }
-                }
-                val newRound = RoundModel(gameId = copyGame.gameId, numRoundInGame = 1, scores = newScoreList)
-                addRoundUseCase(newRound)
-            }
 
-            addGameUseCase(copyGame)
-            addUserUseCase(user)
-            closeFragment()
+                addGameUseCase(copyGame)
+                addUserUseCase(copyUser)
+                closeFragment()
+            }
         }
     }
 
-    private fun closeFragment(){
+    private fun closeFragment() {
         _closeFragment.value = Any()
+    }
+
+    private fun finishGame() {
+        _finishGame.value = Any()
     }
 
 }

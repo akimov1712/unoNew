@@ -9,17 +9,24 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.steelwave.unonew.data.repository.GameRepositoryImpl
 import ru.steelwave.unonew.data.repository.RoundRepositoryImpl
+import ru.steelwave.unonew.data.repository.UserRepositoryImpl
 import ru.steelwave.unonew.domain.entity.GameModel
 import ru.steelwave.unonew.domain.entity.RoundModel
+import ru.steelwave.unonew.domain.entity.UserModel
 import ru.steelwave.unonew.domain.useCase.game.GetGameUseCase
 import ru.steelwave.unonew.domain.useCase.round.GetRoundListUseCase
+import ru.steelwave.unonew.domain.useCase.user.GetAllUserUseCase
+import ru.steelwave.unonew.domain.useCase.user.GetUserUseCase
 
 class TableViewModel(application: Application): AndroidViewModel(application) {
 
     private val gameRepository = GameRepositoryImpl(application)
     private val roundRepository = RoundRepositoryImpl(application)
+    private val userRepository = UserRepositoryImpl(application)
 
     private val getGameUseCase = GetGameUseCase(gameRepository)
+    private val getUserUseCase = GetUserUseCase(userRepository)
+    private val getAllUserUseCase = GetAllUserUseCase(userRepository)
     private val getRoundListUseCase = GetRoundListUseCase(roundRepository)
 
     private val _game: MutableLiveData<GameModel> = MutableLiveData()
@@ -27,6 +34,7 @@ class TableViewModel(application: Application): AndroidViewModel(application) {
 
     private val _roundList: MutableLiveData<List<RoundModel>> = MutableLiveData()
     val roundList: LiveData<List<RoundModel>> get() = _roundList
+
 
     fun getGame(gameId: Int) {
         viewModelScope.launch {

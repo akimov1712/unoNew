@@ -3,6 +3,7 @@ package ru.steelwave.unonew.presentaion.table.userAdapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import ru.steelwave.unonew.R
@@ -33,7 +34,11 @@ class UserAdapter(private val context: Context): ListAdapter<UserModel, UserView
             } else{
                 tvScore.text = userList.name
                 holder.itemView.setOnClickListener {
-                    onUserClickListener?.invoke(userList)
+                    try {
+                        onUserClickListener?.invoke(userList)
+                    } catch (e: java.lang.Exception){
+                        Toast.makeText(context, "Данного игрока не существует", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

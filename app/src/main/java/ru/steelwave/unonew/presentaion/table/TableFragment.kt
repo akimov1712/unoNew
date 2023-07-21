@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -79,9 +80,15 @@ class TableFragment : Fragment() {
 
     private fun setupUserAdapterListeners(game: GameModel){
         userAdapter.onUserClickListener = { user ->
-            findNavController().navigate(
-                TableFragmentDirections.actionTableFragmentToAddFragment(user.userId, game.gameId)
-            )
+            if (game.isFinished){
+                Toast.makeText(requireContext(), "Игра окончена\nПобедитель: " +
+                        "${game.leadingUser.user.name}"
+                    , Toast.LENGTH_SHORT).show()
+            } else{
+                findNavController().navigate(
+                    TableFragmentDirections.actionTableFragmentToAddFragment(user.userId, game.gameId)
+                )
+            }
         }
     }
 

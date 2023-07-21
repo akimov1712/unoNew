@@ -16,6 +16,7 @@ import ru.steelwave.unonew.domain.entity.CardModel
 import ru.steelwave.unonew.domain.entity.GameModel
 import ru.steelwave.unonew.domain.entity.UserModel
 import ru.steelwave.unonew.presentaion.add.cardAdapter.CardAdapter
+import ru.steelwave.unonew.presentaion.toast.ToastFinishGame
 
 
 class AddFragment : Fragment() {
@@ -63,6 +64,9 @@ class AddFragment : Fragment() {
         viewModel.closeFragment.observe(viewLifecycleOwner){
             requireActivity().onBackPressed()
         }
+        viewModel.closeFragment.observe(viewLifecycleOwner){
+            ToastFinishGame.toastFinishGame(requireContext())
+        }
     }
 
     private fun setupListenersInView(){
@@ -78,7 +82,8 @@ class AddFragment : Fragment() {
                     viewModel.updateData(score, args.userId, args.gameId)
                 }
             } else {
-                viewModel.getRoundList(args.gameId)
+                val score = binding.etCountScore.text.toString().toInt()
+                viewModel.updateData(score, args.userId, args.gameId)
             }
         }
     }

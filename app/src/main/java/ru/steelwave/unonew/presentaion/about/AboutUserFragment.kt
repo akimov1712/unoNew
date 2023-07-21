@@ -30,6 +30,8 @@ class AboutUserFragment : Fragment() {
         ViewModelProvider(this,viewModelFactory)[AboutUserViewModel::class.java]
     }
 
+    private var user: UserModel? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -47,8 +49,9 @@ class AboutUserFragment : Fragment() {
 
     private fun observeViewModel(){
         viewModel.user.observe(viewLifecycleOwner){
+            user = it
             with(binding){
-                tvUsername.text = it.name
+                tvUsername.setText(it.name)
                 tvCountWins.text = it.wins.toString()
                 tvRoundWins.text = it.roundsWon.toString()
                 tvRecord.text = it.maxPoints.toString()
@@ -62,6 +65,17 @@ class AboutUserFragment : Fragment() {
     private fun setupListenersInView(){
         binding.btnBack.setOnClickListener{
             requireActivity().onBackPressed()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        user?.let {
+            val newName = binding.tvUsername.text.toString()
+            val updateUser = user?.copy(name = newName)
+            if (updateUser != null) {
+                viewModel.addUser(updateUser)
+            }
         }
     }
 

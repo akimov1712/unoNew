@@ -8,12 +8,15 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.steelwave.unonew.data.repository.UserRepositoryImpl
 import ru.steelwave.unonew.domain.entity.UserModel
+import ru.steelwave.unonew.domain.useCase.user.AddUserUseCase
 import ru.steelwave.unonew.domain.useCase.user.GetUserUseCase
 
 class AboutUserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = UserRepositoryImpl(application)
+
     private val getUserUseCase = GetUserUseCase(userRepository)
+    private val addUserUseCase = AddUserUseCase(userRepository)
 
     private val _user: MutableLiveData<UserModel> = MutableLiveData()
     val user: LiveData<UserModel> get() = _user
@@ -22,6 +25,12 @@ class AboutUserViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             val user = getUserUseCase(userId)
             _user.value = user
+        }
+    }
+
+    fun addUser(user: UserModel){
+        viewModelScope.launch {
+            addUserUseCase(user)
         }
     }
 
