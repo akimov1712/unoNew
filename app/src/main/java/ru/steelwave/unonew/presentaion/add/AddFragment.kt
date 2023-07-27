@@ -64,7 +64,7 @@ class AddFragment : Fragment() {
         viewModel.closeFragment.observe(viewLifecycleOwner){
             requireActivity().onBackPressed()
         }
-        viewModel.closeFragment.observe(viewLifecycleOwner){
+        viewModel.finishGame.observe(viewLifecycleOwner){
             ToastFinishGame.toastFinishGame(requireContext())
         }
     }

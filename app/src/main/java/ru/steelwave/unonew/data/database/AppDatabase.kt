@@ -10,7 +10,7 @@ import ru.steelwave.unonew.data.database.model.GameDbModel
 import ru.steelwave.unonew.data.database.model.RoundDbModel
 import ru.steelwave.unonew.data.database.model.UserDbModel
 
-@Database(entities = [UserDbModel::class, GameDbModel::class, RoundDbModel::class], version = 4, exportSchema = false)
+@Database(entities = [UserDbModel::class, GameDbModel::class, RoundDbModel::class], version = 1, exportSchema = false)
 @TypeConverters(
     UserConverter::class,
     RoundConverter::class,
@@ -27,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private var INSTANCE: AppDatabase? = null
-        private const val DB_NAME = "test.db"
+        private const val DB_NAME = "uno.db"
         private val LOCK = Any()
 
         fun getInstance(application: Application): AppDatabase{

@@ -69,7 +69,7 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
                 if (copyUser.maxPoints < score) {
                     copyUser.maxPoints = score
                 }
-                if (copyUser.minPoints > score || copyUser.minPoints == 0) {
+                if (copyUser.minPoints > score || copyUser.minPoints == -1) {
                     copyUser.minPoints = score
                 }
 
@@ -91,8 +91,9 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
                             }
                         }
                     }
+                    val numRound = lastRound.numRoundInGame + 1
                     val newRound = RoundModel(
-                        numRoundInGame = lastRound.numRoundInGame++,
+                        numRoundInGame = numRound,
                         scores = newScoreList,
                         gameId = copyGame.gameId
                     )
@@ -117,7 +118,7 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
                     }
                     val newRound = RoundModel(
                         gameId = copyGame.gameId,
-                        numRoundInGame = 0,
+                        numRoundInGame = 1,
                         scores = newScoreList
                     )
                     addRoundUseCase(newRound)

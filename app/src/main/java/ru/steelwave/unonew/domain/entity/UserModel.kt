@@ -7,7 +7,7 @@ data class UserModel(
     val name: String,
     var wins: Int = 0,
     var roundsWon: Int = 0,
-    var maxPoints: Int = 0,
-    var minPoints: Int = 0,
-    var totalPoints: Int = 0,
+    var maxPoints: Int = -1,
+    var minPoints: Int = -1,
+    var totalPoints: Int = -1,
 )
